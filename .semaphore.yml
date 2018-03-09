@@ -3,6 +3,6 @@ name: basic GH repo test
 semaphore_image: "standard"
 blocks:
   - build:
-    jobs:
-      - commands:
-        - echo foo
+      jobs:
+        - commands:
+          - echo foo
