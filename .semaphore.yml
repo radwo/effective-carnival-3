@@ -1,6 +1,6 @@
 version: "v1.0"
 name: basic GH repo test
-semaphore_image: "docker"
+semaphore_image: "standard"
 blocks:
   - build:
     jobs:
