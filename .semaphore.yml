@@ -1,0 +1,8 @@
+version: "v1.0"
+name: basic GH repo test
+semaphore_image: "docker"
+blocks:
+  - build:
+    jobs:
+      - commands:
+        - echo foo
