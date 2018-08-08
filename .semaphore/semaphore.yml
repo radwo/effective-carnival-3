@@ -8,56 +8,11 @@ agent:
 blocks:
   - name: "Build"
     task:
-      env_vars:
-        - name: APP_ENV
-          value: prod
       jobs:
       - name: Docker build
         commands:
+          - docker run --net=host -p 3306:3306 --name db -e MYSQL_ROOT_PASSWORD=kavez -e MYSQL_DATABASE=testdb -d mysql:5.5
+          - gem install sequel mysql2 --no-ri --no-rdoc
           - checkout
-          - ls -1
-          - echo $APP_ENV
-          - echo "Docker build..."
-          - echo "done"
-
-  - name: "Smoke tests"
-    task:
-      jobs:
-      - name: Smoke
-        commands:
-          - checkout
-          - echo "make smoke"
-
-  - name: "Unit tests"
-    task:
-      jobs:
-      - name: RSpec
-        commands:
-          - checkout
-          - echo "make rspec"
-
-      - name: Lint code
-        commands:
-          - checkout
-          - echo "make lint"
-
-      - name: Check security
-        commands:
-          - checkout
-          - echo "make security"
-
-  - name: "Integration tests"
-    task:
-      jobs:
-      - name: Cucumber
-        commands:
-          - checkout
-          - echo "make cucumber"
-
-  - name: "Push Image"
-    task:
-      jobs:
-      - name: Push
-        commands:
-          - checkout
-          - echo "make docker.push"
+          - sleep 10
+          - ruby db.rb
