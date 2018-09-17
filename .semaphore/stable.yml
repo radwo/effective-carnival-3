@@ -1,0 +1,17 @@
+version: "v1.0"
+name: Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Stable Release"
+    task:
+      jobs:
+      - name: "Deployment"
+        commands:
+          - echo "Deployment Prod"
+promotions:
+  - name: notfound
+    pipeline_file: "404.yml"
