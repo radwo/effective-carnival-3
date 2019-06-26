@@ -1,0 +1,7 @@
+language: elixir
+
+services:
+  - docker
+
+script:
+- make lint
