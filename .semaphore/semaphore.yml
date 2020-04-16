@@ -23,13 +23,10 @@ blocks:
         - name: Shard
           parallelism: 21
           commands:
-            - './bin/ci/run-features-shard.sh $SEMAPHORE_JOB_INDEX $SEMAPHORE_JOB_COUNT'
-  - name: Specs
-    task:
-      jobs:
+            - ./bin/ci/run-features-shard.sh $SEMAPHORE_JOB_INDEX $SEMAPHORE_JOB_COUNT
         - name: Specs
           commands:
-            - './bin/ci/run-specs.sh'
+            - ./bin/ci/run-specs.sh
         - name: API Acceptance Specs (& deprecated controller specs)
           commands:
-            - './bin/ci/run-api-acceptance-specs.sh'
+            - ./bin/ci/run-api-acceptance-specs.sh
